@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome! Part 1: Look and find - Page 4 Masterclass Lesson</title>
+    <!-- Google Fonts: Plus Jakarta Sans for English, Tajawal for Arabic, Fredoka for Playful Textbook Header -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tone.js for Native Synthesizer & Audio Chimes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        arabic: ['Tajawal', 'sans-serif'],
+                        english: ['Plus Jakarta Sans', 'sans-serif'],
+                        playful: ['Fredoka', 'cursive', 'sans-serif'],
+                    },
+                    colors: {
+                        topGoalTeal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                            950: '#042f2c',
+                        },
+                        amberGold: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        vibrantRose: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(rgba(148, 163, 184, 0.16) 1.2px, transparent 1.2px),
+                radial-gradient(at 0% 0%, rgba(13, 148, 136, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.14) 0px, transparent 48%),
+                radial-gradient(at 50% 50%, rgba(225, 29, 72, 0.08) 0px, transparent 55%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
+                linear-gradient(135deg, #f0fdfa 0%, #f8fafc 50%, #f1f5f9 100%);
+            background-size: 24px 24px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1e293b;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .en-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            direction: ltr;
+        }
+
+        .playful-font {
+            font-family: 'Fredoka', cursive, sans-serif;
+            direction: ltr;
+        }
+
+        .arabic-center {
+            text-align: center !important;
+            display: block !important;
+            width: 100% !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* Glassmorphism Presentation Frame */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 4px 12px -2px rgba(15, 23, 42, 0.03);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Textbook Cyan Pencil Circling Style */
+        .book-circled-choice {
+            box-shadow: 0 0 0 2.5px #06b6d4, 0 0 20px rgba(6, 182, 212, 0.5) !important;
+            background-color: #ecfeff !important;
+            color: #0e7490 !important;
+            border-color: #06b6d4 !important;
+            border-radius: 9999px !important;
+            font-weight: 900 !important;
+            transform: scale(1.05) !important;
+            transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Real-time Karaoke Word Highlight */
+        .active-karaoke-word {
+            background-color: #fef08a !important;
+            color: #064e3b !important;
+            box-shadow: 0 0 0 2.5px #facc15, 0 4px 16px rgba(234, 179, 8, 0.55) !important;
+            transform: scale(1.1) translateY(-2px);
+            font-weight: 900 !important;
+            border-radius: 8px;
+        }
+
+        /* Sound equalizer bars */
+        @keyframes soundWave {
+            0%, 100% { height: 6px; }
+            50% { height: 22px; }
+        }
+        .sound-bar {
+            width: 3.5px;
+            background-color: #0d9488;
+            border-radius: 4px;
+            animation: soundWave 1.2s ease-in-out infinite;
+        }
+        .sound-bar:nth-child(2) { animation-delay: 0.2s; background-color: #06b6d4; }
+        .sound-bar:nth-child(3) { animation-delay: 0.4s; background-color: #f59e0b; }
+        .sound-bar:nth-child(4) { animation-delay: 0.1s; background-color: #e11d48; }
+
+        .active-audio-highlight {
+            outline: 3px solid #0d9488 !important;
+            box-shadow: 0 0 30px rgba(13, 148, 136, 0.35) !important;
+        }
+
+        /* Subtle character float */
+        @keyframes floatGentle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(1.5deg); }
+        }
+        .anim-float {
+            animation: floatGentle 3.6s ease-in-out infinite;
+        }
+
+        @keyframes bounceGentle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .anim-bounce {
+            animation: bounceGentle 2.2s ease-in-out infinite;
+        }
+
+        /* Word Bank Pink Capsule */
+        .wordbank-capsule {
+            border: 2px solid #fb7185;
+            background: #ffffff;
+            color: #0284c7;
+            border-radius: 9999px;
+            padding: 6px 18px;
+            font-weight: 800;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .wordbank-capsule:hover {
+            border-color: #e11d48;
+            background: #fff1f2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(244, 63, 94, 0.25);
+        }
+        .wordbank-capsule.active-capsule {
+            border-color: #0d9488 !important;
+            background: #ccfbf1 !important;
+            color: #0f766e !important;
+            box-shadow: 0 0 0 3px #14b8a6, 0 6px 18px rgba(20, 184, 166, 0.3) !important;
+            transform: scale(1.08);
+        }
+
+        /* Interactive Letter Tile Buttons */
+        .letter-tile-btn {
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+        .letter-tile-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px -1px rgba(13, 148, 136, 0.25);
+        }
+        .letter-tile-btn:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="selection:bg-teal-100 selection:text-teal-900 pb-24 relative">
+
+    <!-- Top Sticky Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+            
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-teal-600 via-emerald-600 to-amber-400 flex items-center justify-center text-slate-950 shadow-md shadow-teal-500/20 text-xl font-black">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+                            Top Goal 1 • Welcome! (Part 1 - Page 4)
+                        </span>
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200 flex items-center gap-1">
+                            <span>🍁</span> Canadian Voice (Emma)
+                        </span>
+                        <!-- Teacher Honors Badge -->
+                        <span class="text-[11px] font-extrabold px-3 py-0.5 rounded-full bg-gradient-to-r from-amber-50 via-rose-50 to-teal-50 text-amber-900 border border-amber-300 shadow-2xs flex items-center gap-1.5">
+                            <i class="fa-solid fa-chalkboard-user text-amber-600 text-xs"></i>
+                            <span>معلم اللغة الإنجليزية: <strong>الأستاذ / ماجد السويهري</strong></span>
+                        </span>
+                    </div>
+                    <h1 class="text-base md:text-lg font-black text-slate-800 mt-0.5 flex items-center gap-2">
+                        <span>درس الترحيب بالعام الدراسي المصور</span>
+                        <span class="playful-font text-teal-700 font-bold text-sm md:text-base">(Welcome! Part 1: Look and find)</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Voice Controls Toolbar -->
+            <div class="flex items-center flex-wrap gap-2 text-xs">
+                <div class="flex items-center gap-2 px-2.5 py-1.5 bg-slate-100 rounded-xl border border-slate-200 text-slate-700">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span class="font-bold">المتحدثة: <strong class="text-teal-700">Emma (Canada 🇨🇦)</strong></span>
+                </div>
+                
+                <button id="speedBtn" onclick="togglePlaybackSpeed()" class="px-2.5 py-1.5 rounded-xl bg-slate-200/70 hover:bg-slate-300 font-bold transition flex items-center gap-1.5 text-slate-700" title="سرعة النطق الهادئة">
+                    <i class="fa-solid fa-feather-pointed text-teal-600 text-xs"></i>
+                    <span id="speedDisplay">هادئ وجميل (0.85x)</span>
+                </button>
+
+                <button onclick="testCanadianVoice()" class="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-black transition flex items-center gap-1 shadow-xs active:scale-95">
+                    <i class="fa-solid fa-volume-high text-xs"></i>
+                    <span>تجربة الصوت</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Audio Player Status Notification (Fixed overlay to prevent any page shift) -->
+    <div id="audioStatusBar" class="hidden fixed top-16 left-0 right-0 z-40 max-w-6xl mx-auto px-4 pointer-events-none transition-all duration-200">
+        <div class="p-3.5 rounded-2xl bg-slate-900 text-white shadow-xl flex items-center justify-between gap-4 border border-teal-500/50 pointer-events-auto">
+            <div class="flex items-center gap-3">
+                <div class="flex items-end gap-1 h-5">
+                    <span class="sound-bar"></span>
+                    <span class="sound-bar"></span>
+                    <span class="sound-bar"></span>
+                    <span class="sound-bar"></span>
+                </div>
+                <div>
+                    <div class="text-[11px] text-teal-300 font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-sparkles text-amber-300"></i>
+                        <span>المعلمة الكندية Emma تقرأ بلكنة هادئة ومتقنة:</span>
+                    </div>
+                    <div id="currentSpeakingText" class="en-font font-bold text-white text-sm md:text-base"></div>
+                </div>
+            </div>
+            <button onclick="stopAudio()" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition flex items-center gap-1">
+                <i class="fa-solid fa-stop"></i> إيقاف
+            </button>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 mt-6">
+
+        <!-- Outer Textbook Page Frame matching image_1f6cbc.png -->
+        <div class="bg-white rounded-3xl border-2 border-slate-200/90 shadow-sm p-5 md:p-8 mb-8 relative overflow-hidden">
+            
+            <!-- Teal Curved Top Banner matching textbook cover with bubbles & QR Code -->
+            <div class="rounded-3xl bg-gradient-to-r from-teal-800 via-teal-700 to-emerald-800 text-white p-5 md:p-6 mb-6 relative overflow-hidden shadow-md">
+                
+                <!-- Bubbles decorative elements -->
+                <div class="absolute -top-6 -left-6 w-32 h-32 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+                <div class="absolute top-2 left-20 w-8 h-8 rounded-full bg-white/20 pointer-events-none"></div>
+                <div class="absolute bottom-2 left-40 w-12 h-12 rounded-full bg-white/15 pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
+                    
+                    <!-- Left: "Welcome !" Header Title with authentic bubbles style -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-white/20 border-2 border-white/30 flex items-center justify-center text-white text-2xl font-black shadow-inner">
+                            ✨
+                        </div>
+                        <div>
+                            <span class="text-xs font-black text-teal-200 block">Unit • الوحدة التمهيدية</span>
+                            <h2 class="playful-font text-3xl md:text-5xl font-black text-white tracking-wide drop-shadow-md">
+                                Welcome !
+                            </h2>
+                        </div>
+                    </div>
+
+                    <!-- Right: QR Code + PART 1 Badge + Page 4 Marker -->
+                    <div class="flex items-center gap-3">
+                        <!-- Simulated Digital Lesson QR Code matching textbook -->
+                        <div class="bg-white p-1.5 rounded-xl shadow-md border border-slate-200 text-center flex flex-col items-center justify-center w-16 h-20 shrink-0">
+                            <span class="text-[7px] font-black text-slate-700">رابط الدرس الرقمي</span>
+                            <div class="w-10 h-10 bg-slate-900 rounded p-0.5 flex items-center justify-center my-0.5">
+                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="34" height="34" fill="#ffffff" rx="2"/>
+                                    <rect x="3" y="3" width="9" height="9" fill="#0f172a" rx="1"/>
+                                    <rect x="5" y="5" width="5" height="5" fill="#ffffff"/>
+                                    <rect x="22" y="3" width="9" height="9" fill="#0f172a" rx="1"/>
+                                    <rect x="24" y="5" width="5" height="5" fill="#ffffff"/>
+                                    <rect x="3" y="22" width="9" height="9" fill="#0f172a" rx="1"/>
+                                    <rect x="5" y="24" width="5" height="5" fill="#ffffff"/>
+                                    <rect x="15" y="5" width="4" height="4" fill="#0f172a"/>
+                                    <rect x="15" y="15" width="4" height="8" fill="#0f172a"/>
+                                    <rect x="22" y="22" width="9" height="4" fill="#0f172a"/>
+                                </svg>
+                            </div>
+                            <span class="text-[6px] font-bold text-teal-800">IEN.MOE.GOV.SA</span>
+                        </div>
+
+                        <!-- PART 1 Badge with pink/teal pill -->
+                        <div class="flex items-center bg-white/20 border-2 border-white/40 rounded-2xl p-1 shadow-md">
+                            <span class="px-2.5 py-1 rounded-xl bg-rose-500 text-white font-black text-xs md:text-sm uppercase tracking-wider">
+                                PART
+                            </span>
+                            <span class="px-3 py-1 font-black playful-font text-white text-xl md:text-2xl">
+                                1
+                            </span>
+                        </div>
+
+                        <!-- Page 4 Marker -->
+                        <div class="w-11 h-11 rounded-2xl bg-amber-400 text-slate-950 font-black playful-font text-xl flex items-center justify-center shadow-md border-2 border-white">
+                            4
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Activity 1 Header matching textbook: 1 Look and find. -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-xl bg-rose-600 text-white flex items-center justify-center font-black text-base shadow-xs">
+                        1
+                    </span>
+                    <div>
+                        <h3 class="en-font text-xl md:text-2xl font-black text-slate-900 leading-snug">
+                            1 Look and find.
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-0.5">
+                            انظر إلى مشهد ساحة المدرسة واكتشف الكلمات الثمانية من الصندوق، أو اضغط على أي كلمة للاستماع لنطقها بالصوت الكندي.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Global Audio Actions -->
+                <div class="flex items-center gap-2">
+                    <button onclick="playAll8WordsSequential()" id="playAll8WordsBtn" class="px-4 py-2 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-black text-xs md:text-sm flex items-center gap-2 transition shadow-md active:scale-95">
+                        <i class="fa-solid fa-circle-play text-amber-300"></i>
+                        <span>قراءة جميع كلمات الصندوق متتابعة 🎵</span>
+                    </button>
+                    <button onclick="stopAudio()" class="px-3 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition border border-slate-300">
+                        <i class="fa-solid fa-stop"></i> إيقاف
+                    </button>
+                </div>
+            </div>
+
+            <!-- The 8 Words Pink Box Ribbon matching image_1f6cbc.png -->
+            <div class="p-3.5 md:p-4 rounded-3xl bg-gradient-to-r from-rose-50/60 via-white to-teal-50/60 border-2 border-rose-200/90 shadow-2xs mb-6">
+                <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3" dir="ltr" id="wordBankContainer">
+                    <!-- Populated dynamically via JS with exact 8 capsules -->
+                </div>
+            </div>
+
+            <!-- Illustrated School Celebration Scene matching image_1f6cbc.png -->
+            <div class="relative rounded-3xl overflow-hidden border-2 border-slate-200 shadow-sm bg-gradient-to-b from-sky-200 via-sky-100 to-amber-50 mb-8 p-4 md:p-6" id="schoolSceneContainer">
+                
+                <!-- Vector Canvas representing the school celebration scene -->
+                <div class="w-full h-80 md:h-[420px] relative rounded-2xl overflow-hidden bg-gradient-to-b from-sky-200 to-emerald-100 border border-slate-300/60 shadow-inner flex items-center justify-center">
+                    
+                    <svg width="100%" height="100%" viewBox="0 0 800 480" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" class="select-none">
+                        
+                        <!-- Background Sky & Clouds -->
+                        <rect width="800" height="480" fill="#bae6fd"/>
+                        <circle cx="120" cy="80" r="45" fill="#ffffff" opacity="0.8"/>
+                        <circle cx="160" cy="70" r="55" fill="#ffffff" opacity="0.9"/>
+                        <circle cx="210" cy="80" r="40" fill="#ffffff" opacity="0.8"/>
+                        <circle cx="680" cy="90" r="40" fill="#ffffff" opacity="0.8"/>
+
+                        <!-- School Building Red Brick Facade -->
+                        <rect x="220" y="80" width="380" height="340" fill="#f87171" stroke="#b91c1c" stroke-width="3"/>
+                        <polygon points="210,80 410,25 610,80" fill="#dc2626" stroke="#991b1b" stroke-width="3"/>
+
+                        <!-- Saudi Arabian Flag on Top Entrance of School -->
+                        <g transform="translate(365, 88)">
+                            <rect width="90" height="52" fill="#15803d" rx="4" stroke="#14532d" stroke-width="2"/>
+                            <!-- White Sword & Shahada styling -->
+                            <path d="M18 36 L72 36 L68 33 M72 36 L68 39" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="22" cy="36" r="2.5" fill="#ffffff"/>
+                            <text x="45" y="26" font-family="'Tajawal', sans-serif" font-weight="900" font-size="11" fill="#ffffff" text-anchor="middle">لا إله إلا الله</text>
+                        </g>
+
+                        <!-- School Windows (6 White Frame Windows matching image) -->
+                        <rect x="250" y="110" width="60" height="50" fill="#e0f2fe" stroke="#ffffff" stroke-width="4"/>
+                        <line x1="280" y1="110" x2="280" y2="160" stroke="#ffffff" stroke-width="3"/>
+                        <line x1="250" y1="135" x2="310" y2="135" stroke="#ffffff" stroke-width="3"/>
+
+                        <rect x="510" y="110" width="60" height="50" fill="#e0f2fe" stroke="#ffffff" stroke-width="4"/>
+                        <line x1="540" y1="110" x2="540" y2="160" stroke="#ffffff" stroke-width="3"/>
+                        <line x1="510" y1="135" x2="570" y2="135" stroke="#ffffff" stroke-width="3"/>
+
+                        <rect x="250" y="190" width="60" height="50" fill="#e0f2fe" stroke="#ffffff" stroke-width="4"/>
+                        <line x1="280" y1="190" x2="280" y2="240" stroke="#ffffff" stroke-width="3"/>
+                        <line x1="250" y1="215" x2="310" y2="215" stroke="#ffffff" stroke-width="3"/>
+
+                        <rect x="510" y="190" width="60" height="50" fill="#e0f2fe" stroke="#ffffff" stroke-width="4"/>
+                        <line x1="540" y1="190" x2="540" y2="240" stroke="#ffffff" stroke-width="3"/>
+                        <line x1="510" y1="215" x2="570" y2="215" stroke="#ffffff" stroke-width="3"/>
+
+                        <!-- Entrance Portal & Double Blue Doors -->
+                        <rect x="365" y="180" width="90" height="130" fill="#ffffff" stroke="#94a3b8" stroke-width="3"/>
+                        <rect x="375" y="210" width="32" height="100" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
+                        <rect x="413" y="210" width="32" height="100" fill="#0284c7" stroke="#0369a1" stroke-width="2"/>
+                        <!-- Door windows & handles -->
+                        <rect x="381" y="220" width="20" height="35" fill="#bae6fd"/>
+                        <rect x="419" y="220" width="20" height="35" fill="#bae6fd"/>
+                        <circle cx="403" cy="270" r="2.5" fill="#facc15"/>
+                        <circle cx="417" cy="270" r="2.5" fill="#facc15"/>
+
+                        <!-- Entrance Stairs -->
+                        <polygon points="340,310 480,310 500,340 320,340" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2"/>
+                        <polygon points="320,340 500,340 520,370 300,370" fill="#cbd5e1" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Big Banner: COME AND CELEBRATE SCHOOL! with colored letters -->
+                        <path d="M310 150 Q410 165 510 150 L505 190 Q410 205 315 190 Z" fill="#ffffff" stroke="#f59e0b" stroke-width="3"/>
+                        <text x="410" y="170" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="13" fill="#b91c1c" text-anchor="middle">COME AND</text>
+                        <text x="410" y="185" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="12" fill="#ea580c" text-anchor="middle">CELEBRATE SCHOOL!</text>
+
+                        <!-- Balloons near the Banner and Pillars -->
+                        <!-- Red Balloon left -->
+                        <circle cx="310" cy="140" r="14" fill="#ef4444"/>
+                        <path d="M310 154 L308 170" stroke="#94a3b8" stroke-width="1.5"/>
+                        <!-- Yellow Balloon left -->
+                        <circle cx="295" cy="165" r="13" fill="#facc15"/>
+                        <!-- Green Balloon right -->
+                        <circle cx="515" cy="140" r="14" fill="#22c55e"/>
+                        <!-- Blue Balloon right -->
+                        <circle cx="525" cy="165" r="14" fill="#0284c7"/>
+                        <!-- Orange Balloon held on stairs -->
+                        <circle cx="455" cy="235" r="18" fill="#f97316"/>
+                        <path d="M455 253 L450 280" stroke="#94a3b8" stroke-width="1.5"/>
+
+                        <!-- Green Playground Lawn & Sidewalk -->
+                        <rect x="0" y="340" width="800" height="140" fill="#4ade80"/>
+                        <rect x="0" y="390" width="800" height="90" fill="#94a3b8"/>
+                        <line x1="0" y1="390" x2="800" y2="390" stroke="#cbd5e1" stroke-width="6"/>
+
+                        <!-- Left Giant Sunflowers & Yellow Sun Creature (Starry) -->
+                        <!-- Sunflowers -->
+                        <circle cx="210" cy="265" r="28" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+                        <circle cx="210" cy="265" r="16" fill="#78350f"/>
+                        <path d="M210 293 L210 370" stroke="#15803d" stroke-width="5" stroke-linecap="round"/>
+
+                        <circle cx="255" cy="230" r="34" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+                        <circle cx="255" cy="230" r="20" fill="#78350f"/>
+                        <path d="M255 264 L255 370" stroke="#15803d" stroke-width="6" stroke-linecap="round"/>
+
+                        <!-- Yellow Sun Creature Starry smiling between flowers -->
+                        <g transform="translate(265, 270)">
+                            <path d="M30 5 L36 20 L52 16 L44 30 L58 38 L42 46 L46 62 L32 54 L22 66 L18 50 L2 52 L12 38 L0 28 L16 26 L14 10 L26 18 Z" fill="#fde047" stroke="#ca8a04" stroke-width="2"/>
+                            <circle cx="25" cy="32" r="3" fill="#0f172a"/>
+                            <circle cx="37" cy="32" r="3" fill="#0f172a"/>
+                            <path d="M27 40 Q31 44 35 40" stroke="#78350f" stroke-width="2" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Left: Yellow School Bus with Blip in the window -->
+                        <!-- Bus Body -->
+                        <rect x="-20" y="240" width="220" height="170" rx="20" fill="#facc15" stroke="#ca8a04" stroke-width="3"/>
+                        <rect x="0" y="250" width="105" height="95" rx="8" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2"/>
+                        <text x="130" y="340" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="13" fill="#0f172a">SCHOOL BUS</text>
+                        <circle cx="155" cy="336" r="6" fill="#f97316"/>
+                        <!-- Bus Wheel -->
+                        <circle cx="150" cy="410" r="30" fill="#1e293b"/>
+                        <circle cx="150" cy="410" r="16" fill="#94a3b8"/>
+
+                        <!-- Blue Creature (Blip) waving from bus window -->
+                        <g transform="translate(15, 265)">
+                            <ellipse cx="40" cy="45" rx="30" ry="32" fill="#38bdf8"/>
+                            <circle cx="30" cy="35" r="7" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                            <circle cx="48" cy="35" r="7" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                            <circle cx="31" cy="35" r="3.5" fill="#0f172a"/>
+                            <circle cx="49" cy="35" r="3.5" fill="#0f172a"/>
+                            <path d="M34 50 Q40 55 46 50" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+                            <!-- Waving hand -->
+                            <path d="M68 40 C76 30, 82 45, 74 52" fill="#38bdf8"/>
+                        </g>
+
+                        <!-- Students walking towards school entrance with backpacks -->
+                        <!-- Student with green backpack -->
+                        <g transform="translate(370, 275)">
+                            <circle cx="18" cy="18" r="12" fill="#fed7aa"/>
+                            <circle cx="18" cy="15" r="13" fill="#0f172a"/>
+                            <rect x="8" y="30" width="20" height="45" rx="4" fill="#ea580c"/>
+                            <rect x="10" y="33" width="16" height="24" rx="4" fill="#15803d"/>
+                        </g>
+
+                        <!-- Student with blue backpack -->
+                        <g transform="translate(395, 290)">
+                            <circle cx="18" cy="18" r="12" fill="#fed7aa"/>
+                            <circle cx="18" cy="15" r="13" fill="#0f172a"/>
+                            <rect x="8" y="30" width="20" height="50" rx="4" fill="#facc15"/>
+                            <rect x="10" y="34" width="16" height="26" rx="4" fill="#0284c7"/>
+                        </g>
+
+                        <!-- Student in foreground with backpack on shoulder -->
+                        <g transform="translate(305, 305)">
+                            <circle cx="24" cy="20" r="15" fill="#fed7aa"/>
+                            <circle cx="24" cy="16" r="16" fill="#0f172a"/>
+                            <rect x="12" y="36" width="24" height="60" rx="4" fill="#22c55e"/>
+                            <rect x="15" y="75" width="9" height="45" fill="#9333ea"/>
+                            <rect x="26" y="75" width="9" height="45" fill="#9333ea"/>
+                            <rect x="-2" y="44" width="16" height="25" rx="5" fill="#64748b"/>
+                        </g>
+
+                        <!-- Red Box Creature (Bud) with big glasses in front -->
+                        <g transform="translate(380, 345)" class="anim-float">
+                            <!-- Body -->
+                            <rect x="12" y="20" width="62" height="65" rx="14" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+                            <!-- Glasses Frames & Big Eyes -->
+                            <circle cx="30" cy="40" r="15" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+                            <circle cx="62" cy="40" r="15" fill="#ffffff" stroke="#0f172a" stroke-width="3"/>
+                            <line x1="45" y1="40" x2="47" y2="40" stroke="#0f172a" stroke-width="3.5"/>
+                            <circle cx="32" cy="38" r="6" fill="#0f172a"/>
+                            <circle cx="64" cy="38" r="6" fill="#0f172a"/>
+                            <circle cx="34" cy="36" r="2" fill="#ffffff"/>
+                            <circle cx="66" cy="36" r="2" fill="#ffffff"/>
+                            <!-- Happy smile -->
+                            <path d="M36 62 Q46 72 56 62 Z" fill="#7f1d1d"/>
+                            <!-- Arms waving -->
+                            <path d="M12 45 Q-2 35 0 45" stroke="#ef4444" stroke-width="4.5" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Purple Bouncy Creature (Fluff) waving on right -->
+                        <g transform="translate(540, 340)" class="anim-bounce">
+                            <!-- Cloud-like Body -->
+                            <circle cx="45" cy="50" r="28" fill="#c084fc"/>
+                            <circle cx="28" cy="45" r="18" fill="#c084fc"/>
+                            <circle cx="62" cy="45" r="18" fill="#c084fc"/>
+                            <!-- Big Eyes -->
+                            <circle cx="40" cy="42" r="6.5" fill="#ffffff" stroke="#3b0764" stroke-width="2"/>
+                            <circle cx="56" cy="42" r="6.5" fill="#ffffff" stroke="#3b0764" stroke-width="2"/>
+                            <circle cx="41" cy="42" r="3" fill="#0f172a"/>
+                            <circle cx="57" cy="42" r="3" fill="#0f172a"/>
+                            <path d="M43 55 Q48 60 53 55" stroke="#3b0764" stroke-width="2.5" stroke-linecap="round"/>
+                            <!-- Running Feet -->
+                            <path d="M40 76 L35 90 M52 76 L62 88" stroke="#a855f7" stroke-width="5" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Speech Bubble: "Welcome back!" pointing to Bud & Fluff -->
+                        <g transform="translate(420, 290)">
+                            <rect x="0" y="0" width="195" height="48" rx="16" fill="#ffffff" stroke="#0f172a" stroke-width="2.5"/>
+                            <!-- Speech tails -->
+                            <path d="M40 48 L30 65 L55 48 Z" fill="#ffffff"/>
+                            <path d="M135 48 L155 70 L145 48 Z" fill="#ffffff"/>
+                            <text x="97" y="32" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="18" fill="#0f172a" text-anchor="middle">Welcome back!</text>
+                        </g>
+
+                        <!-- Backpacks lined up on right wall (Green, Blue, Brown) -->
+                        <rect x="580" y="270" width="16" height="26" rx="4" fill="#10b981"/>
+                        <rect x="600" y="268" width="16" height="28" rx="4" fill="#0284c7"/>
+                        <rect x="620" y="266" width="18" height="30" rx="4" fill="#f59e0b"/>
+                        <rect x="642" y="264" width="18" height="32" rx="4" fill="#9333ea"/>
+
+                    </svg>
+
+                </div>
+
+                <!-- Scene Interactive Hint Banner -->
+                <div class="mt-3 flex flex-wrap items-center justify-between gap-2 px-2">
+                    <span class="text-xs text-slate-500 font-bold arabic-center md:arabic-center">
+                        <i class="fa-solid fa-hand-pointer text-teal-600 ml-1"></i> اضغط على أي كلمة من صندوق الكلمات بالأعلى للاستماع إليها واكتشاف موقعها بالمشهد!
+                    </span>
+                    <button onclick="playGreetingBubble()" class="px-3.5 py-1.5 rounded-xl bg-white border border-slate-300 text-slate-800 hover:border-teal-400 font-bold text-xs transition flex items-center gap-1.5 shadow-2xs">
+                        <i class="fa-solid fa-comment-dots text-teal-600"></i>
+                        <span>استمع لعبارة: "Welcome back!"</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ========================================================================= -->
+            <!-- EXERCISE SECTION: UNSCRAMBLE THE LETTERS (رتب الحروف لتصبح كلمة)           -->
+            <!-- ========================================================================= -->
+            <section id="unscramble-exercises" class="mt-10 pt-6 border-t-2 border-slate-100">
+                
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6">
+                    <div class="flex items-center gap-3">
+                        <span class="w-10 h-10 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-black text-lg shadow-xs">
+                            <i class="fa-solid fa-arrow-down-a-z"></i>
+                        </span>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xl md:text-2xl font-black text-slate-800">تمرين تفاعلي: رتّب الحروف لتصبح كلمة</h3>
+                                <span class="en-font text-xs font-black px-2.5 py-0.5 rounded-full bg-teal-100 text-teal-900 border border-teal-300">8 Words Unscramble</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-0.5">
+                                اضغط على الحروف المبعثرة بالترتيب الصحيح لتكوين كل كلمة من كلمات الدرس، واستمع فورياً لتزامن النطق الكندي عند اكتمال الكلمة!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Live Score & Global Controls -->
+                    <div class="flex items-center gap-2 self-start md:self-auto">
+                        <div class="bg-teal-50 border border-teal-200 px-4 py-2 rounded-2xl flex items-center gap-2 shadow-2xs">
+                            <i class="fa-solid fa-award text-amber-500"></i>
+                            <span class="text-xs font-bold text-teal-950">
+                                النتيجة: <strong id="unscrambleScoreDisplay" class="font-black text-teal-700 text-sm">0</strong> من 8
+                            </span>
+                        </div>
+
+                        <button onclick="revealAllUnscramble()" class="px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition shadow-xs flex items-center gap-1 active:scale-95">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> ترتيب الكل
+                        </button>
+
+                        <button onclick="resetUnscrambleExercise()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 font-bold text-xs transition border border-slate-300 flex items-center gap-1 active:scale-95" title="إعادة الاختبار">
+                            <i class="fa-solid fa-rotate-right"></i> إعادة
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 8 Interactive Unscramble Word Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="unscrambleCardsContainer">
+                    <!-- Populated dynamically via JavaScript -->
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Toast Notification Element -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-800 text-sm">
+        <i id="toastIcon" class="fa-solid fa-check text-emerald-400"></i>
+        <span id="toastMsg">تم الإجراء بنجاح</span>
+    </div>
+
+    <script>
+        /* Exact 8 words with scrambled letters from image_1f6cbc.png */
+        const lookAndFindDataset = [
+            {
+                id: 1,
+                word: "balloons",
+                scrambledLetters: ["l", "b", "o", "a", "s", "o", "l", "n"],
+                ar: "بالونات ملونة",
+                locationHint: "البالونات الملونة المعلقة عند لافتة الاحتفال وحول الدرج",
+                sentence: "Colorful balloons decorate the school celebration."
+            },
+            {
+                id: 2,
+                word: "bus",
+                scrambledLetters: ["s", "b", "u"],
+                ar: "حافلة مدرسية",
+                sentence: "The yellow school bus arrives with students.",
+                locationHint: "الحافلة المدرسية الصفراء الكبيرة على يسار المشهد"
+            },
+            {
+                id: 3,
+                word: "camera",
+                scrambledLetters: ["m", "c", "a", "r", "a", "e"],
+                ar: "كاميرا تصوير",
+                sentence: "We use a camera to take pictures of our first day.",
+                locationHint: "كاميرا توثيق فعاليات العودة للمدرسة"
+            },
+            {
+                id: 4,
+                word: "drums",
+                scrambledLetters: ["u", "d", "m", "r", "s"],
+                ar: "طبول موسيقية",
+                sentence: "Students play the drums in the school band.",
+                locationHint: "الطبول الإيقاعية في الفرقة المدرسية"
+            },
+            {
+                id: 5,
+                word: "guitar",
+                scrambledLetters: ["t", "g", "a", "u", "r", "i"],
+                ar: "جيتار",
+                sentence: "The teacher plays a cheerful song on the guitar.",
+                locationHint: "آلة الجيتار الوترية الموسيقية"
+            },
+            {
+                id: 6,
+                word: "photo",
+                scrambledLetters: ["t", "p", "o", "h", "o"],
+                ar: "صورة فوتوغرافية",
+                sentence: "Look at the colorful photo of our school friends.",
+                locationHint: "الصورة الفوتوغرافية التذكارية المدرسية"
+            },
+            {
+                id: 7,
+                word: "playground",
+                scrambledLetters: ["y", "p", "a", "l", "r", "g", "u", "o", "n", "d"],
+                ar: "ساحة المدرسة / الملعب",
+                sentence: "Students meet and celebrate together in the school playground.",
+                locationHint: "ساحة وملعب المدرسة الخارجية الخضراء"
+            },
+            {
+                id: 8,
+                word: "poster",
+                scrambledLetters: ["t", "p", "e", "o", "r", "s"],
+                ar: "ملصق / لافتة إعلانية",
+                sentence: "The big poster says: Come and celebrate school!",
+                locationHint: "اللافتة والملصق الترحيبي العريض فوق المدخل"
+            }
+        ];
+    </script>
+
+    <!-- ========================================================== -->
+    <!-- AUDIO ENGINE: CANADIAN VOICE ONLY (EMMA 🇨🇦)               -->
+    <!-- Calm, articulate, friendly 0.85x cadence                   -->
+    <!-- ========================================================== -->
+    <script>
+        let currentVoice = null;
+        let speechRate = 0.85; // Calm, clear cadence
+        let synth = ('speechSynthesis' in window) ? window.speechSynthesis : null;
+        let isSpeakingSequential = false;
+        let currentAudioHighlightEl = null;
+        let isAudioUnlocked = false;
+
+        /* Touch & Click Unlocker for Mobile Safari / Android Chrome */
+        function unlockAudioContext() {
+            if (isAudioUnlocked) return;
+            isAudioUnlocked = true;
+
+            try {
+                if (window.Tone && Tone.context && Tone.context.state !== 'running') {
+                    Tone.context.resume();
+                }
+            } catch (e) {}
+
+            try {
+                if (synth) {
+                    const silentUtterance = new SpeechSynthesisUtterance(' ');
+                    silentUtterance.volume = 0.01;
+                    synth.speak(silentUtterance);
+                }
+            } catch (e) {}
+        }
+
+        ['click', 'touchstart', 'touchend', 'keydown'].forEach(evt => {
+            document.addEventListener(evt, unlockAudioContext, { once: true, passive: true });
+        });
+
+        /* Robust Canadian Female Voice Detection */
+        function getBestCanadianVoice() {
+            if (!synth) return null;
+            const voices = synth.getVoices() || [];
+            if (!voices || voices.length === 0) return null;
+
+            // 1. Canadian English Female Voice
+            let match = voices.find(v => 
+                (v.lang === 'en-CA' || v.lang === 'en_CA' || v.name.toLowerCase().includes('canada')) &&
+                (v.name.toLowerCase().includes('female') || v.name.toLowerCase().includes('natural') || v.name.toLowerCase().includes('online') || v.name.toLowerCase().includes('linda') || v.name.toLowerCase().includes('heather') || v.name.toLowerCase().includes('samantha'))
+            );
+
+            if (!match) {
+                match = voices.find(v => v.lang === 'en-CA' || v.lang === 'en_CA' || v.name.toLowerCase().includes('canada'));
+            }
+
+            // 2. High-quality natural English female voice fallback
+            if (!match) {
+                const naturalKeywords = ['natural', 'online', 'jenny', 'aria', 'ava', 'samantha', 'victoria', 'karen', 'moira', 'fiona', 'zira', 'susan', 'catherine', 'female'];
+                match = voices.find(v => 
+                    v.lang.startsWith('en') && 
+                    naturalKeywords.some(keyword => v.name.toLowerCase().includes(keyword))
+                );
+            }
+
+            if (!match) {
+                match = voices.find(v => v.lang.startsWith('en'));
+            }
+
+            return match || voices[0];
+        }
+
+        function initCanadianVoice() {
+            if (!synth) return;
+            const loadVoices = () => {
+                currentVoice = getBestCanadianVoice();
+            };
+            loadVoices();
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = loadVoices;
+            }
+        }
+
+        /* Sanitize text for speech: clean pronunciation without symbols, brackets, or blanks */
+        function sanitizeTextForSpeech(text) {
+            if (!text) return '';
+            let clean = text
+                .replace(/\[.*?\]/g, '')
+                .replace(/\s*[-—–]\s*/g, ', ')
+                .replace(/!+/g, '.')
+                .replace(/_+/g, ' ')
+                .replace(/:/g, ', ')
+                .replace(/\bblank\b/gi, ' ')
+                .replace(/[“”"«»]/g, '')
+                .replace(/(^|\s)'|'(\s|$)/g, '$1$2')
+                .replace(/\//g, ', ')
+                .replace(/\.\.\./g, ', ')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            if (clean && !/[.?!]$/.test(clean)) {
+                clean += '.';
+            }
+            return clean;
+        }
+
+        /* Play sentence function with word-by-word synchronized highlighting */
+        function playSentence(englishText, elementToHighlight = null, callback = null, wordContainerEl = null, qId = null) {
+            unlockAudioContext();
+
+            const refinedText = sanitizeTextForSpeech(englishText);
+            if (!refinedText) {
+                if (callback) callback();
+                return;
+            }
+
+            if (synth) {
+                try { synth.cancel(); } catch (e) {}
+            }
+
+            if (elementToHighlight) {
+                clearHighlights();
+                currentAudioHighlightEl = elementToHighlight;
+                elementToHighlight.classList.add('active-audio-highlight');
+                // تم إيقاف scrollIntoView لضمان ثبات الصفحة تماماً وعدم تحركها أثناء الصوت
+            }
+
+            const audioBar = document.getElementById('audioStatusBar');
+            const speakingTextEl = document.getElementById('currentSpeakingText');
+            if (audioBar && speakingTextEl) {
+                speakingTextEl.textContent = englishText;
+                audioBar.classList.remove('hidden');
+            }
+
+            if (!synth || !('SpeechSynthesisUtterance' in window)) {
+                if (callback) callback();
+                return;
+            }
+
+            try {
+                if (synth.paused) synth.resume();
+                synth.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(refinedText);
+                const voice = currentVoice || getBestCanadianVoice();
+
+                if (voice) {
+                    utterance.voice = voice;
+                    utterance.lang = voice.lang || 'en-CA';
+                } else {
+                    utterance.lang = 'en-CA';
+                }
+
+                utterance.rate = speechRate;
+                utterance.pitch = 1.04;
+
+                window._activeUtterance = utterance;
+
+                utterance.onend = () => {
+                    window._activeUtterance = null;
+                    if (audioBar && !isSpeakingSequential) {
+                        audioBar.classList.add('hidden');
+                    }
+                    clearHighlights();
+                    if (callback) callback();
+                };
+
+                utterance.onerror = () => {
+                    window._activeUtterance = null;
+                    if (audioBar && !isSpeakingSequential) {
+                        audioBar.classList.add('hidden');
+                    }
+                    clearHighlights();
+                    if (callback) callback();
+                };
+
+                synth.speak(utterance);
+            } catch (err) {
+                console.warn("Speech error:", err);
+                if (callback) callback();
+            }
+        }
+
+        function clearHighlights() {
+            if (currentAudioHighlightEl) {
+                currentAudioHighlightEl.classList.remove('active-audio-highlight');
+                currentAudioHighlightEl = null;
+            }
+            document.querySelectorAll('.active-audio-highlight').forEach(el => el.classList.remove('active-audio-highlight'));
+        }
+
+        function stopAudio() {
+            isSpeakingSequential = false;
+            if (synth) {
+                try { synth.cancel(); } catch (e) {}
+            }
+            clearHighlights();
+            document.querySelectorAll('.wordbank-capsule').forEach(el => el.classList.remove('active-capsule'));
+            const audioBar = document.getElementById('audioStatusBar');
+            if (audioBar) audioBar.classList.add('hidden');
+            const btn = document.getElementById('playAll8WordsBtn');
+            if (btn) {
+                btn.innerHTML = `<i class="fa-solid fa-circle-play text-amber-300"></i> <span>قراءة جميع كلمات الصندوق متتابعة 🎵</span>`;
+            }
+        }
+
+        function testCanadianVoice() {
+            playSentence("Hello! I am Emma from Canada. Welcome to school! Look and find: balloons, bus, camera, drums, guitar, photo, playground, and poster.");
+            showToast("جاري التحدث بنمط كندي هادئ ومتقن (0.85x) 🍁", "fa-check text-emerald-400");
+        }
+
+        function togglePlaybackSpeed() {
+            const speeds = [
+                { rate: 0.85, label: "هادئ وجميل (0.85x)" },
+                { rate: 0.75, label: "متأنٍ وواضح (0.75x)" },
+                { rate: 0.95, label: "عادي معتدل (0.95x)" }
+            ];
+            
+            const currentIdx = speeds.findIndex(s => Math.abs(s.rate - speechRate) < 0.04);
+            const nextIdx = (currentIdx + 1) % speeds.length;
+            
+            speechRate = speeds[nextIdx].rate;
+            document.getElementById('speedDisplay').textContent = speeds[nextIdx].label;
+            showToast(`تم ضبط وتيرة الصوت: ${speeds[nextIdx].label}`, 'fa-feather-pointed text-teal-500');
+        }
+
+        /* Tone.js PolySynth Chime */
+        let synthPlayer = null;
+        function playChime(isSuccess = true) {
+            try {
+                if (!synthPlayer && window.Tone) {
+                    synthPlayer = new Tone.PolySynth(Tone.Synth).toDestination();
+                    synthPlayer.volume.value = -12;
+                }
+                if (window.Tone && Tone.context && Tone.context.state !== 'running') {
+                    Tone.context.resume();
+                }
+                const now = window.Tone ? Tone.now() : 0;
+                if (isSuccess && synthPlayer) {
+                    synthPlayer.triggerAttackRelease(["C5", "E5", "G5"], "16n", now);
+                } else if (synthPlayer) {
+                    synthPlayer.triggerAttackRelease(["A3", "F3"], "16n", now);
+                }
+            } catch (e) {}
+        }
+
+        function playTapChime() {
+            try {
+                if (!synthPlayer && window.Tone) {
+                    synthPlayer = new Tone.PolySynth(Tone.Synth).toDestination();
+                    synthPlayer.volume.value = -12;
+                }
+                if (window.Tone && Tone.context && Tone.context.state !== 'running') {
+                    Tone.context.resume();
+                }
+                if (synthPlayer) {
+                    synthPlayer.triggerAttackRelease(["E5"], "32n", Tone.now());
+                }
+            } catch (e) {}
+        }
+    </script>
+
+    <!-- ========================================================== -->
+    <!-- RENDERING: 8 INTERACTIVE UNSCRAMBLE WORD CARDS (رتب الحروف)-->
+    <!-- ========================================================== -->
+    <script>
+        let unscrambleScore = 0;
+        let unscrambleAssemblyState = {}; // id => { picked: [{ char, idx }], solved: bool }
+
+        function renderUnscrambleCards() {
+            const container = document.getElementById('unscrambleCardsContainer');
+            if (!container) return;
+
+            container.innerHTML = lookAndFindDataset.map(item => {
+                unscrambleAssemblyState[item.id] = { picked: [], solved: false };
+
+                return `
+                    <div class="glass-card rounded-3xl p-5 border-2 border-slate-200/90 shadow-2xs hover:border-teal-300 transition flex flex-col justify-between" id="unscramble-card-${item.id}">
+                        <div>
+                            <!-- Card Header: ID Badge & Pronounce Button -->
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-8 h-8 rounded-xl bg-teal-100 text-teal-900 font-black text-xs flex items-center justify-center shrink-0">
+                                        ${item.id}
+                                    </span>
+                                    <span class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-800 border border-teal-200">
+                                        <i class="fa-solid fa-arrow-down-a-z text-[10px] text-teal-600 ml-1"></i> رتّب الحروف
+                                    </span>
+                                </div>
+
+                                <button onclick="playSingleWordAudio(${item.id})" class="px-3 py-1.5 rounded-xl bg-teal-50 hover:bg-teal-100 text-teal-800 font-bold text-xs transition border border-teal-200 flex items-center gap-1.5 shadow-2xs" title="استمع لنطق الكلمة بالصوت الكندي">
+                                    <i class="fa-solid fa-volume-high text-teal-600 text-xs"></i>
+                                    <span>تشغيل الصوت</span>
+                                </button>
+                            </div>
+
+                            <!-- Centered Meaning and Scene Location Hint -->
+                            <div class="text-center arabic-center my-2">
+                                <div class="text-sm font-black text-teal-900 arabic-center">
+                                    المعنى: <strong class="text-teal-700 text-base font-black">${item.ar}</strong>
+                                </div>
+                                <div class="text-[11px] text-slate-500 font-bold mt-1 arabic-center">
+                                    📍 الموقع بالمشهد: <span>${item.locationHint}</span>
+                                </div>
+                            </div>
+
+                            <!-- Scrambled Letter Tiles Bank -->
+                            <div class="my-3 text-center">
+                                <div class="text-[11px] font-bold text-slate-400 mb-2 arabic-center">
+                                    اضغط على الحروف المبعثرة بالترتيب لتكوين الكلمة:
+                                </div>
+                                <div class="flex flex-wrap justify-center items-center gap-2 select-none" dir="ltr" id="unscramble-pool-${item.id}">
+                                    ${item.scrambledLetters.map((char, charIdx) => `
+                                        <button id="tile-btn-${item.id}-${charIdx}"
+                                            onclick="handleTileClick(${item.id}, ${charIdx}, '${char}')"
+                                            class="tile-btn-${item.id} letter-tile-btn w-9 h-9 md:w-10 md:h-10 rounded-2xl bg-white border-2 border-teal-300 hover:border-teal-500 hover:bg-teal-50 text-teal-950 font-black text-base md:text-lg shadow-2xs flex items-center justify-center transition active:scale-95">
+                                            ${char}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <!-- Assembled Word Output Display & Actions -->
+                            <div class="flex flex-col sm:flex-row items-center gap-2 mt-2" dir="ltr">
+                                <div id="unscramble-display-${item.id}"
+                                    class="en-font flex-1 w-full px-4 py-2.5 text-base md:text-lg font-black rounded-2xl bg-teal-50/50 border-2 border-teal-200 text-teal-950 shadow-2xs text-center flex items-center justify-center min-h-[48px] transition">
+                                    <span class="text-slate-400 font-bold text-xs md:text-sm">اضغط على الحروف أعلاه بالترتيب</span>
+                                </div>
+
+                                <div class="flex items-center gap-1.5 shrink-0">
+                                    <button onclick="undoTileClick(${item.id})" class="px-3 py-2.5 rounded-2xl bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-700 border border-slate-300 font-bold text-xs transition flex items-center gap-1 active:scale-95" title="تراجع عن آخر حرف">
+                                        <i class="fa-solid fa-delete-left text-sm text-rose-500"></i>
+                                        <span>تراجع</span>
+                                    </button>
+
+                                    <button onclick="autoSolveWord(${item.id})" class="px-3.5 py-2.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs transition shadow-2xs flex items-center gap-1.5 active:scale-95" title="رتّب الكلمة تلقائياً">
+                                        <i class="fa-solid fa-wand-magic-sparkles text-slate-950"></i>
+                                        <span>رتّب الكلمة</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Clue Box (Revealed when correct) -->
+                        <div id="unscramble-feedback-${item.id}" class="hidden rounded-2xl p-3 mt-3 text-center arabic-center font-bold transition"></div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function handleTileClick(itemId, charIdx, char) {
+            const state = unscrambleAssemblyState[itemId];
+            if (!state || state.solved) return;
+
+            const btn = document.getElementById(`tile-btn-${itemId}-${charIdx}`);
+            if (btn && btn.classList.contains('picked-tile')) return;
+
+            playTapChime();
+
+            if (btn) {
+                btn.classList.add('picked-tile', 'opacity-35', 'bg-slate-200', 'border-slate-300', 'text-slate-400', 'scale-90', 'pointer-events-none');
+            }
+
+            state.picked.push({ char, charIdx });
+            updateWordAssemblyDisplay(itemId);
+        }
+
+        function updateWordAssemblyDisplay(itemId) {
+            const item = lookAndFindDataset.find(x => x.id === itemId);
+            const displayEl = document.getElementById(`unscramble-display-${itemId}`);
+            const feedbackEl = document.getElementById(`unscramble-feedback-${itemId}`);
+            const card = document.getElementById(`unscramble-card-${itemId}`);
+            const state = unscrambleAssemblyState[itemId];
+            if (!displayEl || !item || !state) return;
+
+            const rawAssembled = state.picked.map(p => p.char).join("");
+
+            if (!rawAssembled) {
+                displayEl.innerHTML = `<span class="text-slate-400 font-bold text-xs md:text-sm">اضغط على الحروف أعلاه بالترتيب</span>`;
+                displayEl.className = 'en-font flex-1 w-full px-4 py-2.5 text-base md:text-lg font-black rounded-2xl bg-teal-50/50 border-2 border-teal-200 text-teal-950 shadow-2xs text-center flex items-center justify-center min-h-[48px] transition';
+                if (feedbackEl) feedbackEl.classList.add('hidden');
+                return;
+            }
+
+            const cleanAssembled = rawAssembled.trim().toLowerCase();
+            const cleanTarget = item.word.trim().toLowerCase();
+
+            if (cleanAssembled === cleanTarget) {
+                state.solved = true;
+                if (!state.counted) {
+                    state.counted = true;
+                    unscrambleScore++;
+                    document.getElementById('unscrambleScoreDisplay').textContent = unscrambleScore;
+                }
+
+                // Letters stick tightly together as one solid word
+                displayEl.innerHTML = `
+                    <span class="text-emerald-900 font-black text-lg md:text-xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-xl animate-bounce"></i>
+                        <span class="tracking-normal">${item.word}</span>
+                        <span class="text-xs bg-emerald-200 text-emerald-950 px-2.5 py-0.5 rounded-full font-bold shadow-2xs">إجابة صحيحة ✅</span>
+                    </span>
+                `;
+                displayEl.className = 'en-font flex-1 w-full px-4 py-2.5 text-base md:text-lg font-black rounded-2xl bg-emerald-100 border-2 border-emerald-500 text-emerald-950 shadow-md text-center flex items-center justify-center min-h-[48px] ring-2 ring-emerald-300';
+
+                // Play Tone.js chime and immediately synchronize Canadian pronunciation
+                playChime(true);
+                playSentence(item.word, card);
+
+                if (feedbackEl) {
+                    feedbackEl.classList.remove('hidden');
+                    feedbackEl.className = 'rounded-2xl p-3 mt-3 bg-emerald-50 border-2 border-emerald-300 text-emerald-950 font-bold arabic-center text-xs md:text-sm';
+                    feedbackEl.innerHTML = `
+                        <div class="arabic-center">
+                            <i class="fa-solid fa-circle-check text-emerald-600 ml-1"></i>
+                            <span>أحسنت! تم ترتيب الكلمة بنجاح: <strong>(${item.word})</strong> &rarr; ${item.ar}</span>
+                            <div class="text-[11px] text-emerald-800 mt-1 font-bold">📍 الموقع بالمشهد: ${item.locationHint}</div>
+                        </div>
+                    `;
+                }
+
+                showToast(`أحسنت! تم ترتيب كلمة (${item.word}) بنجاح 🎉`, 'fa-circle-check text-emerald-400');
+            } else {
+                displayEl.innerHTML = `<span class="text-teal-950 font-black text-base md:text-lg tracking-normal">${rawAssembled}</span>`;
+                displayEl.className = 'en-font flex-1 w-full px-4 py-2.5 text-base md:text-lg font-black rounded-2xl bg-teal-100/70 border-2 border-teal-300 text-teal-950 shadow-2xs text-center flex items-center justify-center min-h-[48px] transition';
+                if (feedbackEl) feedbackEl.classList.add('hidden');
+            }
+        }
+
+        function undoTileClick(itemId) {
+            const state = unscrambleAssemblyState[itemId];
+            if (!state || state.picked.length === 0) return;
+
+            const last = state.picked.pop();
+            state.solved = false;
+
+            const btn = document.getElementById(`tile-btn-${itemId}-${last.charIdx}`);
+            if (btn) {
+                btn.classList.remove('picked-tile', 'opacity-35', 'bg-slate-200', 'border-slate-300', 'text-slate-400', 'scale-90', 'pointer-events-none');
+            }
+
+            updateWordAssemblyDisplay(itemId);
+        }
+
+        function autoSolveWord(itemId) {
+            const item = lookAndFindDataset.find(x => x.id === itemId);
+            const state = unscrambleAssemblyState[itemId];
+            const card = document.getElementById(`unscramble-card-${itemId}`);
+            const displayEl = document.getElementById(`unscramble-display-${itemId}`);
+            const feedbackEl = document.getElementById(`unscramble-feedback-${itemId}`);
+            if (!item || !card || !displayEl) return;
+
+            const allTiles = card.querySelectorAll(`.tile-btn-${itemId}`);
+            allTiles.forEach(b => {
+                b.classList.add('picked-tile', 'opacity-35', 'bg-slate-200', 'border-slate-300', 'text-slate-400', 'scale-90', 'pointer-events-none');
+            });
+
+            if (!state.counted) {
+                state.counted = true;
+                unscrambleScore++;
+                document.getElementById('unscrambleScoreDisplay').textContent = unscrambleScore;
+            }
+            state.solved = true;
+
+            displayEl.innerHTML = `
+                <span class="text-emerald-900 font-black text-base md:text-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                    <span class="tracking-normal">${item.word}</span>
+                    <span class="text-xs bg-emerald-200 text-emerald-950 px-2.5 py-0.5 rounded-full font-bold shadow-2xs">تم الترتيب ✅</span>
+                </span>
+            `;
+            displayEl.className = 'en-font flex-1 w-full px-4 py-2.5 text-base md:text-lg font-black rounded-2xl bg-emerald-100 border-2 border-emerald-500 text-emerald-950 shadow-md text-center flex items-center justify-center min-h-[48px] ring-2 ring-emerald-300';
+
+            if (feedbackEl) {
+                feedbackEl.classList.remove('hidden');
+                feedbackEl.className = 'rounded-2xl p-3 mt-3 bg-amber-50 border-2 border-amber-300 text-amber-950 font-bold arabic-center text-xs md:text-sm';
+                feedbackEl.innerHTML = `
+                    <div class="arabic-center">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-600 ml-1"></i>
+                        <span>الترتيب الصحيح: <strong>${item.word}</strong> (${item.ar})</span>
+                        <div class="text-[11px] text-amber-800 mt-1 font-bold">📍 الموقع بالمشهد: ${item.locationHint}</div>
+                    </div>
+                `;
+            }
+
+            playSentence(item.word, card);
+            showToast(`تم ترتيب كلمة (${item.word}) بنجاح!`, 'fa-wand-magic-sparkles text-amber-500');
+        }
+
+        function playSingleWordAudio(id) {
+            const item = lookAndFindDataset.find(x => x.id === id);
+            if (!item) return;
+            const card = document.getElementById(`unscramble-card-${id}`);
+            playSentence(item.word, card);
+        }
+
+        function revealAllUnscramble() {
+            lookAndFindDataset.forEach(item => autoSolveWord(item.id));
+            unscrambleScore = 8;
+            document.getElementById('unscrambleScoreDisplay').textContent = "8";
+            showToast("تم ترتيب جميع الكلمات الثمانية بنجاح 🌟", "fa-wand-magic-sparkles text-amber-500");
+        }
+
+        function resetUnscrambleExercise() {
+            unscrambleScore = 0;
+            document.getElementById('unscrambleScoreDisplay').textContent = "0";
+            renderUnscrambleCards();
+            showToast("تمت إعادة ضبط تمرين ترتيب الحروف للتدريب مجدداً", "fa-rotate-right text-slate-300");
+        }
+
+        /* Rendering the 8 Word Bank Capsules matching the textbook pink box */
+        function renderWordBankCapsules() {
+            const container = document.getElementById('wordBankContainer');
+            if (!container) return;
+
+            container.innerHTML = lookAndFindDataset.map(item => `
+                <button id="wb-capsule-${item.id}"
+                    onclick="handleWordBankClick(${item.id})"
+                    class="wordbank-capsule en-font text-sm md:text-base font-extrabold shadow-2xs transition"
+                    title="${item.word} - ${item.ar}">
+                    <span>${item.word}</span>
+                </button>
+            `).join('');
+        }
+
+        function handleWordBankClick(id) {
+            const item = lookAndFindDataset.find(x => x.id === id);
+            if (!item) return;
+
+            document.querySelectorAll('.wordbank-capsule').forEach(el => el.classList.remove('active-capsule'));
+            const capsuleEl = document.getElementById(`wb-capsule-${id}`);
+            if (capsuleEl) {
+                capsuleEl.classList.add('active-capsule');
+            }
+
+            const card = document.getElementById(`unscramble-card-${id}`);
+            playSentence(item.word, card);
+            showToast(`كلمة (${item.word}) - ${item.ar}: ${item.locationHint}`, 'fa-volume-high text-teal-400');
+        }
+
+        /* Sequential playback for all 8 word bank words */
+        async function playAll8WordsSequential() {
+            if (isSpeakingSequential) {
+                stopAudio();
+                return;
+            }
+
+            isSpeakingSequential = true;
+            const btn = document.getElementById('playAll8WordsBtn');
+            if (btn) {
+                btn.innerHTML = `<i class="fa-solid fa-stop text-rose-300"></i> <span>إيقاف القراءة</span>`;
+            }
+
+            for (let i = 0; i < lookAndFindDataset.length; i++) {
+                if (!isSpeakingSequential) break;
+                const item = lookAndFindDataset[i];
+
+                document.querySelectorAll('.wordbank-capsule').forEach(el => el.classList.remove('active-capsule'));
+                const capsuleEl = document.getElementById(`wb-capsule-${item.id}`);
+                if (capsuleEl) {
+                    capsuleEl.classList.add('active-capsule');
+                }
+
+                const card = document.getElementById(`unscramble-card-${item.id}`);
+                await new Promise(resolve => {
+                    playSentence(item.word, card, resolve);
+                });
+
+                if (isSpeakingSequential) {
+                    await new Promise(r => setTimeout(r, 650));
+                }
+            }
+
+            document.querySelectorAll('.wordbank-capsule').forEach(el => el.classList.remove('active-capsule'));
+            isSpeakingSequential = false;
+            if (btn) {
+                btn.innerHTML = `<i class="fa-solid fa-circle-play text-amber-300"></i> <span>قراءة جميع كلمات الصندوق متتابعة 🎵</span>`;
+            }
+        }
+
+        /* Speech bubble welcome greeting pronunciation */
+        function playGreetingBubble() {
+            playSentence("Welcome back!");
+            showToast('شخصيات All Sorts ترحب بكم: "Welcome back!" 🎉', 'fa-comment-dots text-teal-400');
+        }
+
+        /* Toast notification helper */
+        function showToast(text, iconClass = "fa-check text-emerald-400") {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+            if (!toast || !toastMsg || !toastIcon) return;
+
+            toastMsg.textContent = text;
+            toastIcon.className = `fa-solid ${iconClass}`;
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            if (window._toastTimeout) clearTimeout(window._toastTimeout);
+            window._toastTimeout = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3200);
+        }
+
+        window.addEventListener('load', () => {
+            initCanadianVoice();
+            renderWordBankCapsules();
+            renderUnscrambleCards();
+        });
+    </script>
+</body>
+</html>
